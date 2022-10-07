@@ -8,6 +8,7 @@ use App\Models\Storage;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreStorageRequest;
+use App\Http\Controllers\DashboardController;
 
 class StorageController extends Controller
 {
@@ -25,10 +26,7 @@ class StorageController extends Controller
             'address' => $request->address
         ]);
 
-        return Inertia::render('Dashboard', [
-            'products' => Product::with(['supplier', 'storage'])->get(),
-            'storages' => Storage::with('supplier')->get()
-        ]);
+        return (new DashboardController())->index();
     }
 
     public function show(Storage $storage)

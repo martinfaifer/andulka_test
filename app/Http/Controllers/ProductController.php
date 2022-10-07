@@ -42,10 +42,6 @@ class ProductController extends Controller
             ]);
         } catch (\Throwable $th) {
         }
-        return Inertia::render('Dashboard', [
-            'products' => Product::with(['supplier', 'storage'])->get(),
-            'storages' => Storage::with('supplier')->get(),
-            'suppliers' => Supplier::get()
-        ]);
+        return (new DashboardController())->index();
     }
 }

@@ -13,6 +13,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $productsWithAvailability = [];
         $products = Product::with(['supplier', 'storage'])->get();
         foreach($products as $product) {
             $productsWithAvailability[] = [

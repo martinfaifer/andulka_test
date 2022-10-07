@@ -24,7 +24,6 @@ Route::prefix('products')->group(function() {
 });
 
 Route::prefix('storages')->group(function() {
-    Route::get('{storage}',[StorageController::class, 'show'])->name('storages.show');
     Route::get('create', [StorageController::class, 'create'])->name('storages.create');
     Route::post('', [StorageController::class, 'store'])->name('storages.store');
 });
